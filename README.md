@@ -4,7 +4,8 @@
 ### "Pace" represents agility, this clone would allow the player character to speed up his pace
 
 <h3> Map Design </h3>
-![image](https://github.com/realaryann/Pace-Man/assets/70107111/a61b593f-d9bc-409e-8651-a9d01c49fdf2)
+
+![No coins implement](https://github.com/realaryann/Pace-Man/assets/70107111/9f1e581c-a9f0-4a92-930f-a363f44e2a44)
 
 <p>This is a customized Map Design that draws some familiarities with the original Pac-Man game, but is different and unique in its own regard.</p>
 <p>Being a beginner at Tile-Based game development, I created the map using hierarchical tile classes, implemented by running multiple for-loops.</p>
