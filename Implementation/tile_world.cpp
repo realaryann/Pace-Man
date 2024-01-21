@@ -10,24 +10,65 @@ vector<Tile*>& World::operator[](int index)
     return world[index];
 }
 
+void World::set_lives(int lives)
+{
+    if (lives >=0 && lives <=3)
+    this->lives = lives;
+}
+
 void World::display_score(sf::RenderWindow& window)
 {
+    sf::Font font;
+    if (!font.loadFromFile("Retromic.ttf"))
+    {
+        cout << "Unable to load font\n";
+        exit(1);
+    }
     string score = "Score: ";
     score = score + to_string(this->score);
     sf::Text displayscore;
+    displayscore.setPosition(10.f, 725.f);
+    displayscore.setFont(font);
     displayscore.setString(score);
-    //displayscore.setColor(sf::Color::Yellow);
+    displayscore.setFillColor(sf::Color::White);
     window.draw(displayscore);
 }
 
+void World::display_lives(sf::RenderWindow& window)
+{
+    sf::Font font;
+    if (!font.loadFromFile("Retromic.ttf"))
+    {
+        cout << "Unable to find font\n";
+        exit(1);
+    }
+    string live="Lives: ";
+    live = live + to_string(lives);
+    sf::Text displaylives;
+    displaylives.setFont(font);
+    displaylives.setPosition(620.f, 725.f);
+    displaylives.setString(live);
+    displaylives.setFillColor(sf::Color::White);
+    window.draw(displaylives);
+}
+
+
 void World::simulate_a_turn()
 {
+    //Reset Board
+    for (int i = 0; i < BOARD_HEIGHT; i++)
+    {
+        for (int j = 0; j < BOARD_WIDTH; j++)
+        {
+            if (world[i][j]->who() == CANDY)
+            {
+                delete world[i][j];
+                world[i][j] = new Candy(j, i,*this);
+            }
+        }
+    }
     //Count all candy on the board
-    int candy_count = 0;
-    int player_x;
-    int player_y;
-    int rghost_x;
-    int rghost_y;
+    int candy_count = 0, player_x,player_y,rghost_x,rghost_y;
     for (int i = 0; i < BOARD_HEIGHT; i++)
     {
         for (int j = 0; j < BOARD_WIDTH; j++)
@@ -48,8 +89,22 @@ void World::simulate_a_turn()
             }
         }
     }
-    score = candy_count - 490;
+    //cout << rghost_x<<" "<<rghost_y<<" "<<world[rghost_x][rghost_y]->who() << endl;
+    if (world[player_x][player_y]->get_lives() != lives)
+    {
+        //teleport player to origin, pause the game for 3 seconds.
+        delete world[player_x][player_y];
+        delete world[19][17];
+        world[player_x][player_y] = new Tile(player_y, player_x, *this);
+        world[19][17] = new Player(17, 19, *this);
+        lives--;
+        world[19][17]->set_lives(lives);
+        return;
+    }
+    score = 490-candy_count;
+    //Player has moved
     world[player_x][player_y]->move();
+    //Red_ghost has moved
     if (candy_count < 480 && !(world[rghost_x][rghost_y]->check_exit()))
     {
         world[rghost_x][rghost_y]->exit_house(); //Red Ghost is now outside
@@ -74,6 +129,7 @@ void World::display_world(sf::RenderWindow& window)
 World::World()
 {
     score = 0;
+    lives = 3;
     //Map Design
     //Initialize all possible blocks to be a "Tile"
     world.resize(BOARD_HEIGHT);

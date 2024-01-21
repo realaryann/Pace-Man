@@ -31,12 +31,11 @@ void Red::move()
     {
     case UP:
         if ((coord.y > 0) && (world[coord.y - 1][coord.x]->who() != WALL))
-        {
-            if (world[coord.y - 1][coord.x]->who() == PLAYER)
+        {         
+            if ((world[coord.y - 1][coord.x]->who() == PLAYER))
             {
-                delete world[coord.y - 1][coord.x];
-                world[coord.y - 1][coord.x] = new Tile(coord.y - 1, coord.x, world);
-            }           
+                return;
+            }
             swap(world[coord.y][coord.x], world[coord.y - 1][coord.x]);
             coord.y--;
         }
@@ -44,22 +43,21 @@ void Red::move()
     case LEFT:
         if ((coord.x > 0) && (world[coord.y][coord.x - 1]->who() != WALL))
         {
-            if (world[coord.y][coord.x - 1]->who() == PLAYER)
+            if ((world[coord.y][coord.x - 1]->who() == PLAYER))
             {
-                delete world[coord.y][coord.x - 1];
-                world[coord.y][coord.x - 1] = new Tile(coord.y, coord.x - 1, world);
+                return;
             }
             swap(world[coord.y][coord.x], world[coord.y][coord.x - 1]);
             coord.x--;
+            
         }
         break;
     case RIGHT:
         if ((coord.x + 1 < BOARD_WIDTH) && (world[coord.y][coord.x + 1]->who() != WALL))
         {
-            if (world[coord.y][coord.x + 1]->who() == PLAYER)
+            if ((world[coord.y][coord.x + 1]->who() == PLAYER))
             {
-                delete world[coord.y][coord.x + 1];
-                world[coord.y][coord.x + 1] = new Tile(coord.y, coord.x + 1, world);
+                return;
             }
             swap(world[coord.y][coord.x], world[coord.y][coord.x + 1]);
             coord.x++;
@@ -68,17 +66,15 @@ void Red::move()
     case DOWN:
         if ((coord.y + 1 < BOARD_HEIGHT) && (world[coord.y + 1][coord.x]->who() != WALL))
         {
-            if (world[coord.y + 1][coord.x]->who() == PLAYER)
+            if ((world[coord.y + 1][coord.x]->who() == PLAYER))
             {
-                delete world[coord.y + 1][coord.x];
-                world[coord.y + 1][coord.x] = new Tile(coord.y + 1, coord.x, world);
+                return;
             }
             swap(world[coord.y][coord.x], world[coord.y + 1][coord.x]);
             coord.y++;
         }
         break;
     }
-    cout << coord.x << " " << coord.y << endl;
 }
 
 Object_type Red::who()
