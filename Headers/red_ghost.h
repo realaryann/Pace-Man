@@ -14,6 +14,8 @@ public:
     void exit_house();
     void move();
     void display(sf::RenderWindow& window);
+    int get_lives() { return 0; }
+    void set_lives(int life) {};
     bool check_exit()
     {
         return exithouse;

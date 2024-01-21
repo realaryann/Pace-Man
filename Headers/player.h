@@ -12,6 +12,7 @@ public:
     bool check_exit() { return false; };
     void display(sf::RenderWindow& window);
     int get_lives() { return lives; };
+    void set_lives(int life);
 private:
     Direction dir;
     int lives;

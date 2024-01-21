@@ -11,5 +11,7 @@ public:
     void move() {};
     void exit_house() {};
     bool check_exit() { return false; };
+    int get_lives() { return 0; }
+    void set_lives(int life) {};
     Object_type who();
 };

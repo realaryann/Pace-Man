@@ -10,6 +10,8 @@ public:
     virtual void exit_house() {};
     virtual Object_type who();
     virtual bool check_exit() { return false; };
+    virtual int get_lives() { return 0; };
+    virtual void set_lives(int life) { };
 
 protected:
     Coord coord;

@@ -1,7 +1,7 @@
 #pragma once
 #include "paceman.h"
 #include "tile.h"
-class World;
+#include "tile_world.h"
 
 class Candy : public Tile {
 public:
@@ -10,5 +10,7 @@ public:
     void move() {};
     void exit_house() {};
     bool check_exit() { return false; };
+    int get_lives() { return 0; };
+    void set_lives(int life) {};
     Object_type who();
 };
