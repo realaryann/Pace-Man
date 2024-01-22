@@ -200,6 +200,28 @@ Object_type Player::who()
 
 void Player::display(sf::RenderWindow& window)
 {
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
+    sprite.setScale(0.037f, 0.037f);
+    sprite.setOrigin((sf::Vector2f)texture.getSize() / 2.0f);
+    sf::Vector2f display_position;
+    display_position.x = coord.x * 20.9;
+    display_position.y = coord.y * 21;
+    sprite.setPosition(display_position);
+    if (dir == UP)
+    {
+        sprite.setRotation(-90.f);
+    }
+    else if (dir == DOWN)
+    {
+        sprite.setRotation(90.f);
+    }
+    else if (dir == LEFT)
+    {
+        sprite.setRotation(180.f);
+    }
+    window.draw(sprite);
+    /*
     sf::CircleShape player(10.f);
     player.setFillColor(sf::Color::Yellow);
     sf::Vector2f display_position;
@@ -207,4 +229,5 @@ void Player::display(sf::RenderWindow& window)
     display_position.y = coord.y * 20.6;
     player.setPosition(display_position);
     window.draw(player);
+    */
 }
