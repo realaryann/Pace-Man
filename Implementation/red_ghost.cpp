@@ -3,6 +3,7 @@
 
 void Red::display(sf::RenderWindow& window)
 {
+    /*
     sf::CircleShape Red(10.f);
     Red.setFillColor(sf::Color::Red);
     sf::Vector2f display_position;
@@ -10,6 +11,20 @@ void Red::display(sf::RenderWindow& window)
     display_position.y = coord.y * 20.6;
     Red.setPosition(display_position);
     window.draw(Red);
+    */
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
+    sprite.setScale(0.05, 0.05);
+    sprite.setOrigin((sf::Vector2f)texture.getSize() / 2.0f);
+    sf::Vector2f display_position;
+    display_position.x = coord.x * 21;
+    display_position.y = coord.y * 20.6;
+    sprite.setPosition(display_position);
+    if (dir == LEFT)
+    {
+        sprite.setScale(-0.05f, 0.05f);
+    }
+    window.draw(sprite);
 }
 
 void Red::exit_house()
@@ -31,9 +46,11 @@ void Red::move()
     {
     case UP:
         if ((coord.y > 0) && (world[coord.y - 1][coord.x]->who() != WALL))
-        {         
+        {  
+            dir = UP;
             if ((world[coord.y - 1][coord.x]->who() == PLAYER))
             {
+                world[coord.y - 1][coord.x]->set_lives(world[coord.y - 1][coord.x]->get_lives() - 1);
                 return;
             }
             swap(world[coord.y][coord.x], world[coord.y - 1][coord.x]);
@@ -43,8 +60,10 @@ void Red::move()
     case LEFT:
         if ((coord.x > 0) && (world[coord.y][coord.x - 1]->who() != WALL))
         {
+            dir = LEFT;
             if ((world[coord.y][coord.x - 1]->who() == PLAYER))
             {
+                world[coord.y][coord.x - 1]->set_lives(world[coord.y][coord.x - 1]->get_lives() - 1);
                 return;
             }
             swap(world[coord.y][coord.x], world[coord.y][coord.x - 1]);
@@ -55,8 +74,10 @@ void Red::move()
     case RIGHT:
         if ((coord.x + 1 < BOARD_WIDTH) && (world[coord.y][coord.x + 1]->who() != WALL))
         {
+            dir = RIGHT;
             if ((world[coord.y][coord.x + 1]->who() == PLAYER))
             {
+                world[coord.y][coord.x + 1]->set_lives(world[coord.y][coord.x + 1]->get_lives() - 1);
                 return;
             }
             swap(world[coord.y][coord.x], world[coord.y][coord.x + 1]);
@@ -66,8 +87,10 @@ void Red::move()
     case DOWN:
         if ((coord.y + 1 < BOARD_HEIGHT) && (world[coord.y + 1][coord.x]->who() != WALL))
         {
+            dir = DOWN;
             if ((world[coord.y + 1][coord.x]->who() == PLAYER))
             {
+                world[coord.y + 1][coord.x]->set_lives(world[coord.y + 1][coord.x]->get_lives() - 1);
                 return;
             }
             swap(world[coord.y][coord.x], world[coord.y + 1][coord.x]);

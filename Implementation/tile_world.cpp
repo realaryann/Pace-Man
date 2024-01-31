@@ -52,6 +52,16 @@ void World::display_lives(sf::RenderWindow& window)
     window.draw(displaylives);
 }
 
+void World::clear_world()
+{
+    for (int i = 0; i < BOARD_HEIGHT; i++)
+    {
+        for (int j = 0; j < BOARD_WIDTH; j++)
+        {
+            delete world[i][j];
+        }
+    }
+}
 
 void World::simulate_a_turn()
 {
@@ -89,7 +99,6 @@ void World::simulate_a_turn()
             }
         }
     }
-    //cout << rghost_x<<" "<<rghost_y<<" "<<world[rghost_x][rghost_y]->who() << endl;
     if (world[player_x][player_y]->get_lives() != lives)
     {
         //teleport player to origin, pause the game for 3 seconds.
@@ -100,6 +109,14 @@ void World::simulate_a_turn()
         lives--;
         world[19][17]->set_lives(lives);
         return;
+    }
+    //Check for Lives
+    if (lives < 1)
+    {
+        //End Game
+        clear_world();
+        //set_game_over();
+
     }
     score = 490-candy_count;
     //Player has moved
@@ -128,6 +145,7 @@ void World::display_world(sf::RenderWindow& window)
 
 World::World()
 {
+    cont = false;
     score = 0;
     lives = 3;
     //Map Design

@@ -9,7 +9,15 @@ class World;
 
 class Red :public Tile {
 public:
-    Red(int x, int y, World& world) : Tile(x, y, world) { exithouse = false; };
+    Red(int x, int y, World& world) : Tile(x, y, world) {
+        dir = STAY;
+        exithouse = false;
+        if (!texture.loadFromFile("./redghost.png")){
+
+            cout << "Unable to load redghost.png";
+            exit(1);
+        }
+    };
     Object_type who();
     void exit_house();
     void move();
@@ -21,6 +29,8 @@ public:
         return exithouse;
     }
 private:
+    sf::Texture texture;
     bool onacandy;
     bool exithouse;
+    Direction dir;
 };

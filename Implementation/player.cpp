@@ -218,7 +218,7 @@ void Player::display(sf::RenderWindow& window)
     }
     else if (dir == LEFT)
     {
-        sprite.setRotation(180.f);
+        sprite.setScale(-0.037f, 0.037f);
     }
     window.draw(sprite);
     /*
