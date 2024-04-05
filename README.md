@@ -10,3 +10,15 @@
 <p>This is a customized Map Design that draws some familiarities with the original Pac-Man game, but is different and unique in its own regard.</p>
 <p>Being a beginner at Tile-Based game development, I created the map using hierarchical tile classes, implemented by running multiple for-loops.</p>
 <p>This whole process could have been sped up by creating a 2 dimensional character array that emulates the map using characters that stand for a tile.</p>
+
+<h3>Initial Level State</h3>
+![image](https://github.com/realaryann/Pace-Man/assets/70107111/f71656f2-a350-45a3-8dfd-76d825d31ca1)
+
+<h2>Movement</h2>
+<h3>W/Up Arrow - Up</h3>
+<h3>A/Left Arrow - Left</h3>
+<h3>S/Down Arrow - Down</h3>
+<h3>D/Right Arrow - Right</h3>
+
+
+
