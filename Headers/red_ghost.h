@@ -4,12 +4,12 @@
 #include "wall.h"
 #include "tile_world.h"
 
-
 class World;
 
-class Red :public Tile {
+class Red : public Tile {
 public:
-    Red(int x, int y, World& world) : Tile(x, y, world) {
+    Red(int x, int y, Coord entry, World& world) : Tile(x, y, world) {
+        gate = entry;
         dir = STAY;
         exithouse = false;
         if (!texture.loadFromFile("./redghost.png")){
@@ -19,8 +19,8 @@ public:
         }
     };
     Object_type who();
-    void exit_house();
-    void move();
+    Coord exit_house();
+    Coord move();
     void display(sf::RenderWindow& window);
     int get_lives() { return 0; }
     void set_lives(int life) {};
@@ -30,6 +30,7 @@ public:
     }
 private:
     sf::Texture texture;
+    Coord gate;
     bool onacandy;
     bool exithouse;
     Direction dir;

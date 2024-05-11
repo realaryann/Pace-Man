@@ -6,8 +6,8 @@ void Candy::display(sf::RenderWindow& window)
     candy.setFillColor(sf::Color::White);
     sf::Vector2f display_position;
 
-    display_position.x = coord.x * 20.8;
-    display_position.y = coord.y * 20.9;
+    display_position.x = coord.x * 21.4;
+    display_position.y = coord.y * 21.4;
     candy.setPosition(display_position);
     window.draw(candy);
 }

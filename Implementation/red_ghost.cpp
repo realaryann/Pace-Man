@@ -3,18 +3,9 @@
 
 void Red::display(sf::RenderWindow& window)
 {
-    /*
-    sf::CircleShape Red(10.f);
-    Red.setFillColor(sf::Color::Red);
-    sf::Vector2f display_position;
-    display_position.x = coord.x * 20.5;
-    display_position.y = coord.y * 20.6;
-    Red.setPosition(display_position);
-    window.draw(Red);
-    */
     sf::Sprite sprite;
     sprite.setTexture(texture);
-    sprite.setScale(0.05, 0.05);
+    sprite.setScale(0.045, 0.045);
     sprite.setOrigin((sf::Vector2f)texture.getSize() / 2.0f);
     sf::Vector2f display_position;
     display_position.x = coord.x * 21;
@@ -27,16 +18,21 @@ void Red::display(sf::RenderWindow& window)
     window.draw(sprite);
 }
 
-void Red::exit_house()
+Coord Red::exit_house()
 {
-    swap(world[coord.y][coord.x], world[9][17]);
-    world[10][17] = new Wall(17, 10, world);
-    coord.y = 9;
-    coord.x = 17;
+    // Close the gate
+    delete world[gate.y][gate.x];
+    world[gate.y][gate.x] = new Wall(gate.x, gate.y, world);
+    swap(world[coord.y][coord.x], world[6][9]);
+    delete world[coord.y][coord.x];
+    world[coord.y][coord.x] = new Tile(coord.x, coord.y, world);
+    coord.y = 6;
+    coord.x = 9;
     exithouse = true;
+    return coord;
 }
 
-void Red::move()
+Coord Red::move()
 {
     //Move randomly, But change speeds at random times also, making this ghost the ghost of unpredictibility
     //start here
@@ -51,7 +47,7 @@ void Red::move()
             if ((world[coord.y - 1][coord.x]->who() == PLAYER))
             {
                 world[coord.y - 1][coord.x]->set_lives(world[coord.y - 1][coord.x]->get_lives() - 1);
-                return;
+                return coord;
             }
             swap(world[coord.y][coord.x], world[coord.y - 1][coord.x]);
             coord.y--;
@@ -64,7 +60,7 @@ void Red::move()
             if ((world[coord.y][coord.x - 1]->who() == PLAYER))
             {
                 world[coord.y][coord.x - 1]->set_lives(world[coord.y][coord.x - 1]->get_lives() - 1);
-                return;
+                return coord;
             }
             swap(world[coord.y][coord.x], world[coord.y][coord.x - 1]);
             coord.x--;
@@ -78,7 +74,7 @@ void Red::move()
             if ((world[coord.y][coord.x + 1]->who() == PLAYER))
             {
                 world[coord.y][coord.x + 1]->set_lives(world[coord.y][coord.x + 1]->get_lives() - 1);
-                return;
+                return coord;
             }
             swap(world[coord.y][coord.x], world[coord.y][coord.x + 1]);
             coord.x++;
@@ -91,13 +87,14 @@ void Red::move()
             if ((world[coord.y + 1][coord.x]->who() == PLAYER))
             {
                 world[coord.y + 1][coord.x]->set_lives(world[coord.y + 1][coord.x]->get_lives() - 1);
-                return;
+                return coord;
             }
             swap(world[coord.y][coord.x], world[coord.y + 1][coord.x]);
             coord.y++;
         }
         break;
     }
+    return coord;
 }
 
 Object_type Red::who()

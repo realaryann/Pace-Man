@@ -3,8 +3,9 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(720, 780), "Pace-Man");
+    int x = 5;
     World w;
+    sf::RenderWindow window(sf::VideoMode(w.get_width()*20.5, w.get_height()*25), "Pace-Man");
     while (window.isOpen())
     {
         sf::Event event;
@@ -12,6 +13,11 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == sf::Keyboard::R) {
+                    w.reset();
+                }
+            }
         }
         window.clear();
         w.simulate_a_turn();

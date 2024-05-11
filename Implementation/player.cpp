@@ -9,7 +9,7 @@ void Player::set_lives(int life)
     }
 }
 
-void Player::move()
+Coord Player::move()
 {
     if (lives < 1)
     {
@@ -32,7 +32,7 @@ void Player::move()
             {
                 lives--;
                 dir = UP;
-                return;
+                return coord;
             }
             dir = UP;
             swap(world[coord.y][coord.x], world[coord.y - 1][coord.x]);
@@ -54,7 +54,7 @@ void Player::move()
             {
                 lives--;
                 dir = LEFT;
-                return;
+                return coord;
             }
             dir = LEFT;
             swap(world[coord.y][coord.x], world[coord.y][coord.x - 1]);
@@ -76,7 +76,7 @@ void Player::move()
             {
                 lives--;
                 dir = DOWN;
-                return;
+                return coord;
             }
             dir = DOWN;
             swap(world[coord.y][coord.x], world[coord.y + 1][coord.x]);
@@ -99,7 +99,7 @@ void Player::move()
             {
                 lives--;
                 dir = RIGHT;
-                return;
+                return coord;
             }
             dir = RIGHT;
             swap(world[coord.y][coord.x], world[coord.y][coord.x + 1]);
@@ -123,7 +123,7 @@ void Player::move()
                 {
                     lives--;
                     dir = UP;
-                    return;
+                    return coord;
                 }
                 dir = UP;
                 swap(world[coord.y][coord.x], world[coord.y - 1][coord.x]);
@@ -142,7 +142,7 @@ void Player::move()
                 {
                     lives--;
                     dir = LEFT;
-                    return;
+                    return coord;
                 }
                 dir = LEFT;
                 swap(world[coord.y][coord.x], world[coord.y][coord.x - 1]);
@@ -162,7 +162,7 @@ void Player::move()
                 {
                     lives--;
                     dir = RIGHT;
-                    return;
+                    return coord;
                 }
                 dir = RIGHT;
                 swap(world[coord.y][coord.x], world[coord.y][coord.x + 1]);
@@ -182,7 +182,7 @@ void Player::move()
                 {
                     lives--;
                     dir = DOWN;
-                    return;
+                    return coord;
                 }
                 dir = DOWN;
                 swap(world[coord.y][coord.x], world[coord.y + 1][coord.x]);
@@ -191,6 +191,7 @@ void Player::move()
             break;
         }
     }
+    return coord;
 }
 
 Object_type Player::who()
@@ -202,11 +203,11 @@ void Player::display(sf::RenderWindow& window)
 {
     sf::Sprite sprite;
     sprite.setTexture(texture);
-    sprite.setScale(0.037f, 0.037f);
+    sprite.setScale(0.03f, 0.03f);
     sprite.setOrigin((sf::Vector2f)texture.getSize() / 2.0f);
     sf::Vector2f display_position;
-    display_position.x = coord.x * 20.9;
-    display_position.y = coord.y * 21;
+    display_position.x = coord.x * 21;
+    display_position.y = coord.y * 21.4;
     sprite.setPosition(display_position);
     if (dir == UP)
     {
@@ -218,16 +219,7 @@ void Player::display(sf::RenderWindow& window)
     }
     else if (dir == LEFT)
     {
-        sprite.setScale(-0.037f, 0.037f);
+        sprite.setScale(-0.03f, -0.03f);
     }
     window.draw(sprite);
-    /*
-    sf::CircleShape player(10.f);
-    player.setFillColor(sf::Color::Yellow);
-    sf::Vector2f display_position;
-    display_position.x = coord.x * 20.5;
-    display_position.y = coord.y * 20.6;
-    player.setPosition(display_position);
-    window.draw(player);
-    */
 }

@@ -16,8 +16,8 @@ public:
         }
     };
     Object_type who();
-    void move();
-    void exit_house() {};
+    Coord move();
+    Coord exit_house() { return coord; };
     bool check_exit() { return false; };
     void display(sf::RenderWindow& window);
     int get_lives() { return lives; };
