@@ -1,21 +1,27 @@
 # Pace-Man : A Pac-Man Clone
 
 ## Pace-Man is a passion project created using C++ SFML 
-### "Pace" represents agility, this clone would allow the player character to speed up his pace
+### "Pace" represents the uniqueness of this clone, this clone would allow the player character to speed up his pace
 
 <h3> Map Design </h3>
+<p>Pace-Man is capable of reading in custom symbol maps with the height and width specified at the top of the map<br>
+as an example, the following is the default map supplied with the game. </p>
 
-![No coins implement](https://github.com/realaryann/Pace-Man/assets/70107111/9f1e581c-a9f0-4a92-930f-a363f44e2a44)
+![image](https://github.com/realaryann/Pace-Man/assets/70107111/2c37f038-9b80-472e-8a17-99806f5452d3)
+<p>Symbol Table</p>
+<ul>
+  <li>x - Wall</li>
+  <li>o - Candy</li>
+  <li>s - Empty Space/Tile</li>
+  <li>b - Entry Point to the Ghost House</li>
+  <li>1,2.. - Red Ghost, Blue Ghost...</li>
+  <li>@ - Player/Pace-Man</li>
+</ul>
 
-<p>This is a customized Map Design that draws some familiarities with the original Pac-Man game, but is different and unique in its own regard.</p>
-<p>Being a beginner at Tile-Based game development, I created the map using hierarchical tile classes, implemented by running multiple for-loops.</p>
-<p>This whole process could have been sped up by creating a 2 dimensional character array that emulates the map using characters that stand for a tile.</p>
+<h3> In-Game Map Conversion </h3>
+![image](https://github.com/realaryann/Pace-Man/assets/70107111/7d54eb2d-7150-44e4-b29a-3dc04fca240b)
 
-<h2>Initial Level State</h2>
-
-![image](https://github.com/realaryann/Pace-Man/assets/70107111/1fae74cc-bd76-41cc-9eb2-379994efacca)
-
-<h2>Movement</h2>
+<h2>Movement Controls</h2>
 <h3>W/Up Arrow - Up</h3>
 <h3>A/Left Arrow - Left</h3>
 <h3>S/Down Arrow - Down</h3>
@@ -23,7 +29,7 @@
 
 <h2>Ghost Rules</h2>
 <h3>Red Ghost - Randomly chooses any direction and moves to it</h3>
-<h3>Blue Ghost - Patrols the upper left square of the map (WIP) </h3>
+<h3>Blue Ghost - Calculates how far the player character is and chases the player, but sometimes chooses a random direction</h3>
 
 
 
