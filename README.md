@@ -21,7 +21,9 @@ as an example, the following is the default map supplied with the game. </p>
 </ul>
 
 <h3>Class Hierarchy Diagram</h3>
+
 ![image](https://github.com/realaryann/Pace-Man/assets/70107111/21e724db-a44c-422a-a174-592bf92ac61d)
+
 
 <h2>Movement Controls</h2>
 <h3>W/Up Arrow - Up</h3>
