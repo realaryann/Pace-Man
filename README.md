@@ -11,6 +11,9 @@
 <p>The main loop is used for event handling and carrying out polling instructions to simulate steps on the world. The entire state of the game can be reset to default conditions by pressing the 'R' key anytime during the game. The Player's movements are handled by polling for WASD/Arrow Keys. Whenever the player moves to a Candy Tile, the score is updated in the World class and the Candy tile is turned into a space/empty tile. Moving the player once will move the player in that direction until a new direction is polled for.</p>
 
 <p>If the Player or any of the Ghosts move in the direction of each other, the ghost will devour the player and reduce one of its lives. The player will then be reset to his spawn position and the game continues until all of the player lives deplete. </p>
+
+<h3>Data Storage</h3>
+<p>The project utilizes a std::vector<vector<Tile*>> to represent all tiles. A tile is an abstract base class that can appear as a Wall, a Candy, a Ghost, or the Player at runtime. Movable tiles include the Player and the Ghosts.</p>
 <h3> Map Design </h3>
 <p>Pace-Man is capable of reading in custom symbol maps with the height and width specified at the top of the map<br>
 as an example, the following is the default map supplied with the game. </p>
