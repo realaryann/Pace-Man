@@ -13,7 +13,7 @@
 <p>If the Player or any of the Ghosts move in the direction of each other, the ghost will devour the player and reduce one of its lives. The player will then be reset to his spawn position and the game continues until all of the player lives deplete. </p>
 
 <h3>Data Storage</h3>
-<p>The project utilizes a <raw>std::vector<vector<Tile*>></raw> to represent all tiles. A tile is an abstract base class that can appear as a Wall, a Candy, a Ghost, or the Player at runtime. Movable tiles include the Player and the Ghosts.</p>
+<p>The project utilizes a vector matrix (2D) of Tile pointers to represent all tiles. A tile is an abstract base class that can appear as a Wall, a Candy, a Ghost, or the Player at runtime. Movable tiles include the Player and the Ghosts.</p>
 <h3> Map Design </h3>
 <p>Pace-Man is capable of reading in custom symbol maps with the height and width specified at the top of the map<br>
 as an example, the following is the default map supplied with the game. </p>
