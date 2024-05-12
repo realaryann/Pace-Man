@@ -7,10 +7,10 @@
 <p>Pace-Man is capable of reading in custom symbol maps with the height and width specified at the top of the map<br>
 as an example, the following is the default map supplied with the game. </p>
 
-![image](https://github.com/realaryann/Pace-Man/assets/70107111/2c37f038-9b80-472e-8a17-99806f5452d3)
+![image](https://github.com/realaryann/Pace-Man/assets/70107111/2c37f038-9b80-472e-8a17-99806f5452d3) -> 
 ![image](https://github.com/realaryann/Pace-Man/assets/70107111/7d54eb2d-7150-44e4-b29a-3dc04fca240b)
 
-<p>Symbol Table</p>
+<h3>Symbol Table</h3>
 <ul>
   <li>x - Wall</li>
   <li>o - Candy</li>
