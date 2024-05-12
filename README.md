@@ -1,7 +1,7 @@
 # Pace-Man : A Pac-Man Clone
 
 ## Pace-Man is a project created using C++ SFML 
-### "Pace" represents the uniqueness of this clone, this clone would allow the player character to speed up his pace
+### "Pace" represents the uniqueness of this clone, this clone would allow the player character to increase his speed
 
 <h3>General Discussion</h3>
 <p>This project is a clone of the Pac-Man game created by Toru Iwatani and Atari in 1980. Being one of the staples of video games, I decided to create my version of this game and modify some aspects of the game. The project has an overarching World class that contains information about every aspect of the game. It stores essential details like the height and width of the board, current player score, Coordinates for the player and ghosts, and a two dimensional vector to hold tile pointers. This matrix is known as <i>(lowercase)</i> world</p>
