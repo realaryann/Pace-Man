@@ -33,6 +33,7 @@ as an example, the following is the default map supplied with the game. </p>
 
 <h3>Class Hierarchy Diagram</h3>
 <p>The following is a diagram created to simplify the internal program design and how every class interacts with one another: </p>
+
 ![image](https://github.com/realaryann/Pace-Man/assets/70107111/21e724db-a44c-422a-a174-592bf92ac61d)
 
 <h2>Movement Controls</h2>
