@@ -23,10 +23,10 @@ void Menu::draw_menu(sf::RenderWindow& window) {
     string title = "Pace-Man";
     sf::Text displaytitle;
     displaytitle.setCharacterSize(85);
-    displaytitle.setPosition(width*2.0, height );
+    displaytitle.setPosition(width*2.0, height);
     displaytitle.setFont(font);
     displaytitle.setString(title);
-    displaytitle.setFillColor(sf::Color::White);
+    displaytitle.setFillColor(sf::Color(255, 219, 88));
 
     sf::Sprite spr;
     spr.setTexture(image);
@@ -39,7 +39,16 @@ void Menu::draw_menu(sf::RenderWindow& window) {
     displaymes.setFont(font);
     displaymes.setString(mes);
     displaymes.setFillColor(sf::Color::White);
+
+    string rule = "Use Arrow Keys/WASD to move, watch out for some pesky ghosts!";
+    sf::Text displayrule;
+    displayrule.setPosition(width, height * 22);
+    displayrule.setFont(font);
+    displayrule.setString(rule);
+    displayrule.setCharacterSize(14);
+    displayrule.setFillColor(sf::Color::White);
     window.draw(displaytitle);
+    window.draw(displayrule);
     window.draw(displaymes);
     window.draw(spr);
 }

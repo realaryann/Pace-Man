@@ -23,6 +23,39 @@ int World::get_width() {
     return width;
 }
 
+void World::display_over(sf::RenderWindow& window) {
+    sf::Font font;
+    if (!font.loadFromFile("Retromic.ttf"))
+    {
+        cout << "Unable to load font\n";
+        exit(1);
+    }
+    string ovr = "Game Over";
+    sf::Text displayovr;
+    displayovr.setCharacterSize(80);
+    displayovr.setPosition(width * 2, height * 1);
+    displayovr.setFont(font);
+    displayovr.setString(ovr);
+    displayovr.setFillColor(sf::Color::Red);
+
+    sf::Sprite spr;
+    spr.setTexture(endgame);
+    spr.setScale(0.5, 0.5);
+    spr.setPosition(width * 5, height * 8);
+
+    string res = "Press 'R' to Restart";
+    sf::Text displayres;
+    displayres.setCharacterSize(30);
+    displayres.setPosition(width * 4, height * 20);
+    displayres.setFont(font);
+    displayres.setString(res);
+    displayres.setFillColor(sf::Color::Red);
+
+    window.draw(spr);
+    window.draw(displayres);
+    window.draw(displayovr);
+}
+
 void World::display_score(sf::RenderWindow& window)
 {
     sf::Font font;
@@ -68,6 +101,7 @@ void World::clear_world()
             delete world[i][j];
         }
     }
+    ovr = 1;
 }
 
 void World::simulate_a_turn()
@@ -145,6 +179,7 @@ void World::display_world(sf::RenderWindow& window)
 void World::reset() {
     cont = false;
     score = 0;
+    ovr = 0;
     lives = 3;
     candy_count = 0;
     ifstream map;
@@ -200,7 +235,12 @@ World::World()
     cont = false;
     score = 0;
     lives = 3;
+    ovr = 0;
     candy_count = 0;
+    if (!endgame.loadFromFile("./endgame.PNG")) {
+        cout << "Unable to load Image endgame.PNG";
+        exit(1);
+    }
     ifstream map;
     map.open("defaultmap.txt");
     map >> height;

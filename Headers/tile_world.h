@@ -18,15 +18,18 @@ public:
     void display_score(sf::RenderWindow& window);
     void reset();
     void display_lives(sf::RenderWindow& window);
+    void display_over(sf::RenderWindow& window);
     int get_height();
     int get_width();
     vector<Tile*>& operator[](int index);
+    int ovr;
 private:
     int score;
     bool cont;
     int lives;
     int height;
     int candy_count;
+    sf::Texture endgame;
     Coord entrypoint;
     Coord player;
     Coord rghost;

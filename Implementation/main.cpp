@@ -21,16 +21,20 @@ int main()
                 }
             }
         }
-
         window.clear();
         if (!m.input_listener()) {
             m.draw_menu(window);
         }
         else {
-            w.simulate_a_turn();
-            w.display_world(window);
-            w.display_score(window);
-            w.display_lives(window);
+            if (w.ovr == 1) {
+                w.display_over(window);
+            }
+            else {
+                w.simulate_a_turn();
+                w.display_world(window);
+                w.display_score(window);
+                w.display_lives(window);
+            }
         }
         window.display();
         sf::sleep(sf::milliseconds(150));
