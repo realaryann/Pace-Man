@@ -6,7 +6,7 @@ int main()
 {
     int x = 5;
     World w;
-    sf::RenderWindow window(sf::VideoMode(w.get_width()*20.5, w.get_height()*25), "Pace-Man");
+    sf::RenderWindow window(sf::VideoMode(w.get_width() * 20.5, w.get_height() * 25), "Pace-Man");
     Menu m(w.get_height(), w.get_width());
     while (window.isOpen())
     {
