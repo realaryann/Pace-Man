@@ -163,6 +163,13 @@ void World::simulate_a_turn()
     {
         bghost = world[bghost.y][bghost.x]->move(player);
     }
+    if (eaten < 120 && !(world[oghost.y][oghost.x]->check_exit()))
+    {
+        oghost = world[oghost.y][oghost.x]->exit_house(); //orange Ghost is now outside
+    }
+    if (world[oghost.y][oghost.x]->check_exit()) {
+        oghost = world[oghost.y][oghost.x]->move(player);
+    }
 }
 
 void World::display_world(sf::RenderWindow& window)
