@@ -11,11 +11,6 @@ void Player::set_lives(int life)
 
 Coord Player::move()
 {
-    if (lives < 1)
-    {
-        cout << "Lives End";
-        exit(1);
-    }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
     {
         //Want to move player up, check for collisions
@@ -28,7 +23,7 @@ Coord Player::move()
                 world[coord.y - 1][coord.x] = new Tile(coord.y - 1, coord.x, world);
             }
             //If the tile contains a ghost
-            if ((world[coord.y - 1][coord.x]->who() == RED_GHOST) || (world[coord.y - 1][coord.x]->who() == BLUE_GHOST) || (world[coord.y - 1][coord.x]->who() == GREEN_GHOST))
+            if ((world[coord.y - 1][coord.x]->who() == RED_GHOST) || (world[coord.y - 1][coord.x]->who() == BLUE_GHOST) || (world[coord.y - 1][coord.x]->who() == ORANGE_GHOST))
             {
                 lives--;
                 dir = UP;
@@ -50,7 +45,7 @@ Coord Player::move()
                 delete world[coord.y][coord.x - 1];
                 world[coord.y][coord.x - 1] = new Tile(coord.y, coord.x - 1, world);
             }
-            if ((world[coord.y][coord.x - 1]->who() == RED_GHOST) || (world[coord.y][coord.x - 1]->who() == BLUE_GHOST) || (world[coord.y][coord.x - 1]->who() == GREEN_GHOST))
+            if ((world[coord.y][coord.x - 1]->who() == RED_GHOST) || (world[coord.y][coord.x - 1]->who() == BLUE_GHOST) || (world[coord.y][coord.x - 1]->who() == ORANGE_GHOST))
             {
                 lives--;
                 dir = LEFT;
@@ -72,7 +67,7 @@ Coord Player::move()
                 delete world[coord.y + 1][coord.x];
                 world[coord.y + 1][coord.x] = new Tile(coord.y + 1, coord.x, world);
             }
-            if ((world[coord.y + 1][coord.x]->who() == RED_GHOST) || (world[coord.y + 1][coord.x]->who() == BLUE_GHOST) || (world[coord.y + 1][coord.x]->who() == GREEN_GHOST))
+            if ((world[coord.y + 1][coord.x]->who() == RED_GHOST) || (world[coord.y + 1][coord.x]->who() == BLUE_GHOST) || (world[coord.y + 1][coord.x]->who() == ORANGE_GHOST))
             {
                 lives--;
                 dir = DOWN;
@@ -95,7 +90,7 @@ Coord Player::move()
                 delete world[coord.y][coord.x + 1];
                 world[coord.y][coord.x + 1] = new Tile(coord.y, coord.x + 1, world);
             }
-            if ((world[coord.y][coord.x + 1]->who() == RED_GHOST) || (world[coord.y][coord.x + 1]->who() == BLUE_GHOST) || (world[coord.y][coord.x + 1]->who() == GREEN_GHOST))
+            if ((world[coord.y][coord.x + 1]->who() == RED_GHOST) || (world[coord.y][coord.x + 1]->who() == BLUE_GHOST) || (world[coord.y][coord.x + 1]->who() == ORANGE_GHOST))
             {
                 lives--;
                 dir = RIGHT;
@@ -119,7 +114,7 @@ Coord Player::move()
                     delete world[coord.y - 1][coord.x];
                     world[coord.y - 1][coord.x] = new Tile(coord.y - 1, coord.x, world);
                 }
-                if ((world[coord.y - 1][coord.x]->who() == RED_GHOST) || (world[coord.y - 1][coord.x]->who() == BLUE_GHOST) || (world[coord.y - 1][coord.x]->who() == GREEN_GHOST))
+                if ((world[coord.y - 1][coord.x]->who() == RED_GHOST) || (world[coord.y - 1][coord.x]->who() == BLUE_GHOST) || (world[coord.y - 1][coord.x]->who() == ORANGE_GHOST))
                 {
                     lives--;
                     dir = UP;
@@ -138,7 +133,7 @@ Coord Player::move()
                     delete world[coord.y][coord.x - 1];
                     world[coord.y][coord.x - 1] = new Tile(coord.y, coord.x - 1, world);
                 }
-                if ((world[coord.y][coord.x - 1]->who() == RED_GHOST) || (world[coord.y][coord.x - 1]->who() == BLUE_GHOST) || (world[coord.y][coord.x - 1]->who() == GREEN_GHOST))
+                if ((world[coord.y][coord.x - 1]->who() == RED_GHOST) || (world[coord.y][coord.x - 1]->who() == BLUE_GHOST) || (world[coord.y][coord.x - 1]->who() == ORANGE_GHOST))
                 {
                     lives--;
                     dir = LEFT;
@@ -158,7 +153,7 @@ Coord Player::move()
                     delete world[coord.y][coord.x + 1];
                     world[coord.y][coord.x + 1] = new Tile(coord.y, coord.x + 1, world);
                 }
-                if ((world[coord.y][coord.x + 1]->who() == RED_GHOST) || (world[coord.y][coord.x + 1]->who() == BLUE_GHOST) || (world[coord.y][coord.x + 1]->who() == GREEN_GHOST))
+                if ((world[coord.y][coord.x + 1]->who() == RED_GHOST) || (world[coord.y][coord.x + 1]->who() == BLUE_GHOST) || (world[coord.y][coord.x + 1]->who() == ORANGE_GHOST))
                 {
                     lives--;
                     dir = RIGHT;
@@ -178,7 +173,7 @@ Coord Player::move()
                     delete world[coord.y + 1][coord.x];
                     world[coord.y + 1][coord.x] = new Tile(coord.y + 1, coord.x, world);
                 }
-                if ((world[coord.y + 1][coord.x]->who() == RED_GHOST) || (world[coord.y + 1][coord.x]->who() == BLUE_GHOST) || (world[coord.y + 1][coord.x]->who() == GREEN_GHOST))
+                if ((world[coord.y + 1][coord.x]->who() == RED_GHOST) || (world[coord.y + 1][coord.x]->who() == BLUE_GHOST) || (world[coord.y + 1][coord.x]->who() == ORANGE_GHOST))
                 {
                     lives--;
                     dir = DOWN;
@@ -206,7 +201,7 @@ void Player::display(sf::RenderWindow& window)
     sprite.setScale(0.03f, 0.03f);
     sprite.setOrigin((sf::Vector2f)texture.getSize() / 2.0f);
     sf::Vector2f display_position;
-    display_position.x = coord.x * 21;
+    display_position.x = coord.x * 21.4;
     display_position.y = coord.y * 21.4;
     sprite.setPosition(display_position);
     if (dir == UP)

@@ -6,6 +6,7 @@
 #include "tile.h"
 #include "candy.h"
 #include "player.h"
+#include "orange_ghost.h"
 #include "red_ghost.h"
 
 class World {
@@ -34,6 +35,7 @@ private:
     Coord player;
     Coord rghost;
     Coord bghost;
+    Coord oghost;
     int width;
     vector<vector<Tile*>> world;
 };

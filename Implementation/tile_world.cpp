@@ -135,7 +135,7 @@ void World::simulate_a_turn()
         player.y = 11;
         return;
     }
-    //Check for Lives
+    //Check for Lives 
     if (lives < 1)
     {
         //End Game
@@ -274,6 +274,10 @@ World::World()
                 rghost.x = j;
                 rghost.y = i;
                 break;
+            case '3':
+                oghost.x = j;
+                oghost.y = i;
+                break;
             case '@':
                 player.x = j;
                 player.y = i;
@@ -287,4 +291,5 @@ World::World()
     }
     world[rghost.y][rghost.x] = new Red(rghost.x, bghost.y, entrypoint, *this);
     world[bghost.y][bghost.x] = new Blue(bghost.x, bghost.y, entrypoint, player, *this);
+    world[oghost.y][oghost.x] = new Orange(oghost.x, oghost.y, entrypoint, player, *this);
 }
